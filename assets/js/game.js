@@ -84,6 +84,7 @@ var fight = function(enemy) {
         if (playerInfo.health > 0) {
         // let player know what round they are in, remember that arrays start at 0 so it needs to have 1 added to it
         window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
+       
    
         // pick new enemy to fight based on the index of the enemyNames array
         var pickedEnemyObj = enemyInfo[i];
@@ -128,7 +129,7 @@ var fight = function(enemy) {
 
         // if player is still alive, player wins!
         if (playerInfo.health > 0) {
-            window.alert("Great job, you've survived the game! You now have a score of " + playerMoney + ".");
+            window.alert("Great job, you've survived the game! You now have a score of " + playerInfo.money + ".");
     } else {
         window.alert("You've lost your robot in battle!");
      }
@@ -155,31 +156,11 @@ var shop = function() {
         switch (shopOptionPrompt) {
             case "REFILL": // new case
             case "refill":
-                if (playerInfo.money >= 7) {
-                window.alert("Refilling player's health by 20 for 7 dollars.");
-
-                // increase health and decrease money
-                playerInfo.health = playerInfo.health + 20;
-                playerInfo.money = playerInfo.money - 7;
-                }
-                else {
-                    window.alert("You don't have enough money!");
-                }
-
+                playerInfo.refillHealth();
                 break;
             case "UPGRADE": // new case
             case "upgrade":
-                if (playerInfo.money >= 7) {
-                window.alert("Upgrading player's attack by 6 for 7 dollars.");
-
-                // increase attack and decrease money
-                playerInfo.attack = playerInfo.attack + 6;
-                playerInfo.money = playerInfo.money - 7;
-                }
-                else {
-                    window.alert("You don't have enough money!");
-                }
-
+               playerInfo.upgradeAttack();
                 break;
             case "LEAVE": // new case
             case "leave":
@@ -201,7 +182,20 @@ var shop = function() {
 /* GAME INFORMATION / VARIABLES */
 
 // player information
+
+//function to set name
+var getPlayerName = function() {
+    var name = "";
+    while (name === "" || name === null) {
+        name = prompt("What is your robot's name?");
+    }
+        console.log("Your robot's name is " + name);
+  return name;
+      }
+
+
 var playerInfo = {
+    name: getPlayerName(),
     name: window.prompt("What is your robot's name?"),
     health: 100,
     attack: 10,
