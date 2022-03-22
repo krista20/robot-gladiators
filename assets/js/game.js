@@ -160,7 +160,7 @@ var shop = function() {
 
                 // increase health and decrease money
                 playerInfo.health = playerInfo.health + 20;
-                playerMoney = playerMoney - 7;
+                playerInfo.money = playerInfo.money - 7;
                 }
                 else {
                     window.alert("You don't have enough money!");
@@ -174,7 +174,7 @@ var shop = function() {
 
                 // increase attack and decrease money
                 playerInfo.attack = playerInfo.attack + 6;
-                playerMoney = playerMoney - 7;
+                playerInfo.money = playerInfo.money - 7;
                 }
                 else {
                     window.alert("You don't have enough money!");
